@@ -1,3 +1,8 @@
+/* Programmer:Muhammad Ali 23K-0052
+* Date: 25/01/24
+* Descrption:Grade system using struct
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -35,7 +40,7 @@ int main(){
         else if (students[i].average > 80) students[i].Grade = 'B';
         else if (students[i].average > 70) students[i].Grade = 'C';
         else if (students[i].average > 60) students[i].Grade = 'D';
-        else if (students[i].average <60) students[i].Grade = 'F';
+        else if (students[i].average < 60) students[i].Grade = 'F';
         
         cout << "Student" << i+1 << "result" << endl;
         cout << "English:"<< students[i].eng << endl;
