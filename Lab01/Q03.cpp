@@ -1,3 +1,8 @@
+/* Programmer:Muhammad Ali 23K-0052
+* Date: 25/01/24
+* Descrption:checking which elements of a given array add up to a certain target 
+*/
+
 #include <iostream>
 
 int main()
