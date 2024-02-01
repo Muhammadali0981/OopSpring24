@@ -1,9 +1,9 @@
-#include <iostream>
-
 /* Programmer:Muhammad Ali 23K-0052
-* Date: 25/01/24
+* Date: 01/02/24
 * Descrption:student registration 
 */
+
+#include <iostream>
 
 struct Register{
 
@@ -12,6 +12,7 @@ struct Register{
 
 };
 
+//student struct inheriets register struct
 struct student:Register{
 
     int studentId;
@@ -21,9 +22,13 @@ struct student:Register{
 
 int main()
 {
-    student students[2];
-    for (int i = 0; i < 2; i++)
+	//array for students made   
+    student students[5];
+
+    //input loop
+    for (int i = 0; i < 5; i++)
     {
+       
        std::cout << "enter student id:" << std::endl;
        std::cin >> students[i].studentId;
 
@@ -38,15 +43,17 @@ int main()
 
        std::cout << "enter student email id:" << std::endl;
        std::cin >> students[i].email;
-
+       std::cout << std::endl;
 
     }
     
     std::cout << "data is as follows" << std::endl;
 
-    for (int i = 0; i < 2; i++)
+    //output loop 
+    for (int i = 0; i < 5; i++)
     {
-       std::cout << "data of student" << i+1 << std::endl;
+       
+       std::cout << "data of student " << i+1 << std::endl;
        std::cout << "student id:" << std::endl;
        std::cout << students[i].studentId << std::endl;
 
@@ -61,7 +68,9 @@ int main()
 
        std::cout << "student email id:" << std::endl;
        std::cout << students[i].email << std::endl;
+       std::cout << std::endl;
     }
     
     return 0;
 }
+
