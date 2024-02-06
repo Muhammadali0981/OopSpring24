@@ -74,7 +74,6 @@ void addproduct(product *b, int size){
 	getline(cin, b[size].ProductId);
 
 	cout << "enter product name:"<< endl;
-
 	getline(cin, b[size].name);
 
 	cout << "enter product price:"<< endl;
@@ -96,12 +95,7 @@ void update(product *c, int size, string id){
 	cout << endl << "Enter new data:" << endl;
 
 	//arrows are used to access pointer
-	cout << "enter product id:"<< endl;
-	cin.ignore();
-	getline(cin,findproduct(c, size, id)->ProductId);
-	
 	cout << "enter product name:"<< endl;
-	cin.ignore();
 	getline(cin,findproduct(c, size, id)->name);
 
 	cout << "enter product price:"<< endl;
@@ -111,6 +105,9 @@ void update(product *c, int size, string id){
 	cout << "enter product quantity:"<< endl;
 	cin >> findproduct(c, size, id)->quantity;
 	cin.ignore();
+
+	cout << "enter product id:"<< endl;
+	getline(cin,findproduct(c, size, id)->ProductId);
 
 	}
 	else cout <<  "product not found" << endl;
@@ -161,3 +158,4 @@ int main()
 	
 	return 0;
 }
+
