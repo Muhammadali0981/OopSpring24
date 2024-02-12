@@ -23,54 +23,56 @@ public:
 	bool leap;//info about year
 };
 
-bool checkleap(x){
+//this function is to check for valid date input
+bool checksvalid(int d,int m,bool x){
 
-	if (x) return true;
-	else return false;	
-
+	if((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && d > 31) return false;
+	if (x && d > 29 && m == 2)  return false;
+	if((m == 4 || m == 6 || m == 9 || m == 11) && d > 30) return false;
+	if (!x && d > 28 && m == 2) return false;	
+	if (d < 1) return false;
+	else return true;
 }
+
+
 void addtask(int date,int month,calendar *a,bool b){
-	//checks 
-	if((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && date > 31) std::cout << "enter valid date" << std::endl;
-	if (checkleap(b) && date > 29 && month == 2) std::cout  << "enter valid date" << std::endl;
-	if((month == 4 || month == 6 || month == 9 || month == 11) && date > 30) std::cout << "enter valid date" << std::endl;
-	if (!checkleap(b) && date > 28 && month == 2) std::cout  << "enter valid date" << std::endl;
-	if (date < 1) std::cout  << "enter valid date" << std::endl;
+
+	//check
+	if(!checksvalid(date,month,b)) std::cout << "enter valid date" << std::endl;
 
 	switch(month){
 		case 1:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl;
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].jan);
             break;
 
         case 2:
-        	
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl;
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].feb);
             break;
 
         case 3:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].mar);
             break;
 
         case 4:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].apr);
             break;
 
         case 5:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].may);
             break;
 
         case 6:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].jun);
             break;
@@ -82,39 +84,100 @@ void addtask(int date,int month,calendar *a,bool b){
             break;
 
         case 8:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].aug);
             break;
 
         case 9:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].sep);
             break;
 
         case 10:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].oct);
             break;
 
         case 11:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].nov);
             break;
 
         case 12:
-			cout << "enter task:"<< endl; 
+			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
             getline(cin, a[date].dec);
             break;
+
+        default:
+    		std::cout << "Enter valid date" << std::endl;
 	}
 
 }
 
-void remove 
+void removetask(int date,int month,calendar *a,bool b){
+
+	//check
+	if(!checksvalid(date,month,b)) std::cout << "enter valid date" << std::endl;
+
+	switch(month){
+		case 1:
+			a[date].jan = "";
+            break;
+
+        case 2:
+			a[date].feb = "";
+            break;
+
+        case 3:
+			a[date].mar = "";
+            break;
+
+        case 4:
+			a[date].apr = "";
+            break;
+
+        case 5:
+			a[date].apr = "";
+            break;
+
+        case 6:
+			a[date].jun = "";
+            break;
+
+        case 7:
+			a[date].jul = "";
+            break;
+
+        case 8:
+			a[date].aug = "";
+            break;
+
+        case 9:
+			a[date].sep = "";
+            break;
+
+        case 10:
+			a[date].oct = "";
+            break;
+
+        case 11:
+			a[date].nov = "";
+            break;
+
+        case 12:
+			a[date].oct = "";
+            break;
+
+        default:
+    		std::cout << "Enter valid date" << std::endl;
+	}
+
+}
 
 int main()
 {
