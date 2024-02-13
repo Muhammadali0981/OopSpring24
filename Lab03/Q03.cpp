@@ -2,7 +2,7 @@
 * Date: 09/02/24
 * Descrption:calendar task manager
 */
-//hello form git
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -36,82 +36,82 @@ bool checksvalid(int d,int m,bool x){
 }
 
 
-void addtask(int date,int month,calendar *a,bool b){
+void addtask(int date,int month,calendar &a,bool b){
 
 	//check
 	if(!checksvalid(date,month,b)) std::cout << "enter valid date" << std::endl;
-
+    //using switch case
 	switch(month){
 		case 1:
 			std::cout << "enter task:"<< std::endl;
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].jan);
+            getline(cin, a.jan[date-1]);
             break;
 
         case 2:
 			std::cout << "enter task:"<< std::endl;
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].feb);
+            getline(cin, a.feb[date-1]);
             break;
 
         case 3:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].mar);
+            getline(cin, a.mar[date-1]);
             break;
 
         case 4:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].apr);
+            getline(cin, a.mar[date-1]);
             break;
 
         case 5:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].may);
+            getline(cin, a.apr[date-1]);
             break;
 
         case 6:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].jun);
+            getline(cin, a.jun[date-1]);
             break;
 
         case 7:
 			cout << "enter task:"<< endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].jul);
+            getline(cin, a.jul[date-1]);
             break;
 
         case 8:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].aug);
+            getline(cin, a.aug[date-1]);
             break;
 
         case 9:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].sep);
+            getline(cin, a.sep[date-1]);
             break;
 
         case 10:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].oct);
+            getline(cin, a.oct[date-1]);
             break;
 
         case 11:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].nov);
+            getline(cin, a.nov[date-1]);
             break;
 
         case 12:
 			std::cout << "enter task:"<< std::endl; 
             cin.ignore();//this is used to remove endl form the input buffer
-            getline(cin, a[date].dec);
+            getline(cin, a.dec[date-1]);
             break;
 
         default:
@@ -120,68 +120,302 @@ void addtask(int date,int month,calendar *a,bool b){
 
 }
 
-void removetask(int date,int month,calendar *a,bool b){
+void removetask(int date,int month,calendar &a,bool b){
 
 	//check
 	if(!checksvalid(date,month,b)) std::cout << "enter valid date" << std::endl;
-
+    //switch case for all months
 	switch(month){
 		case 1:
-			a[date].jan = "";
+			a.jan[date-1] = "";
             break;
 
         case 2:
-			a[date].feb = "";
+			a.feb[date-1] = "";
             break;
 
         case 3:
-			a[date].mar = "";
+			a.mar[date-1] = "";
             break;
 
         case 4:
-			a[date].apr = "";
+			a.apr[date-1] = "";
             break;
 
         case 5:
-			a[date].apr = "";
+			a.apr[date-1] = "";
             break;
 
         case 6:
-			a[date].jun = "";
+			a.jun[date-1] = "";
             break;
 
         case 7:
-			a[date].jul = "";
+			a.jul[date-1] = "";
             break;
 
         case 8:
-			a[date].aug = "";
+			a.aug[date-1] = "";
             break;
 
         case 9:
-			a[date].sep = "";
+			a.sep[date-1] = "";
             break;
 
         case 10:
-			a[date].oct = "";
+			a.oct[date-1] = "";
             break;
 
         case 11:
-			a[date].nov = "";
+			a.nov[date-1] = "";
             break;
 
         case 12:
-			a[date].oct = "";
+			a.oct[date-1] = "";
             break;
 
         default:
     		std::cout << "Enter valid date" << std::endl;
 	}
 
+}
+
+void displaytasks(calendar a){
+
+    int c = 0;//a variable to keep track of task 
+
+    //for loops for all months
+    cout << "Tasks in January" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.jan[i] == "")){
+
+        cout << "task on " << i + 1 << "/01 " << endl << a.jan[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in February" << endl;
+    for (int i = 0; i < 29; i++)
+    {
+        if(!(a.feb[i] == "")){
+
+        cout << "task on " << i + 1 << "/02 " << endl << a.feb[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in March" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.mar[i] == "")){
+
+        cout << "task on " << i + 1 << "/03 " << endl << a.mar[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in April" << endl;
+    for (int i = 0; i < 30; i++)
+    {
+        if(!(a.apr[i] == "")){
+
+        cout << "task on " << i + 1 << "/04 " << endl << a.apr[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in May" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.may[i] == "")){
+
+        cout << "task on " << i + 1 << "/05 " << endl << a.may[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in June" << endl;
+    for (int i = 0; i < 30; i++)
+    {
+        if(!(a.jun[i] == "")){
+
+        cout << "task on " << i + 1 << "/06 " << endl << a.jun[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in July" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.jul[i] == "")){
+
+        cout << "task on " << i + 1 << "/07 " << endl << a.jul[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in August" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.aug[i] == "")){
+
+        cout << "task on " << i + 1 << "/08 " << endl << a.aug[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in September" << endl;
+    for (int i = 0; i < 30; i++)
+    {
+        if(!(a.sep[i] == "")){
+
+        cout << "task on " << i + 1 << "/09 " << endl << a.sep[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in October" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.oct[i] == "")){
+
+        cout << "task on " << i + 1 << "/10 " << endl << a.oct[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in November" << endl;
+    for (int i = 0; i < 30; i++)
+    {
+        if(!(a.nov[i] == "")){
+
+        cout << "task on " << i + 1 << "/11 " << endl << a.nov[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
+
+    cout << "Tasks in December" << endl;
+    for (int i = 0; i < 31; i++)
+    {
+        if(!(a.dec[i] == "")){
+
+        cout << "task on " << i + 1 << "/12 " << endl << a.dec[i] << endl;
+        c++;
+
+        }
+    }
+    if (c == 0){
+
+        cout << "no tasks" << endl;
+    }
+    c = 0;
 }
 
 int main()
 {
 	calendar cal;
+    int choice,date,month;
+    bool l;
+    cout << "is current year leap press 1 for yes 0 for no" << endl;
+    cin >> l;
+    while (choice != 4)
+	{   
+        //build simple ui
+		cout << "Welcome to Task Manager" << endl << "Enter choice:" << endl;
+		cout << "1.Add Task" << endl << "2.Remove Task" << endl << "3.Display Task" << endl << "4.Exit" << endl;
+		cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "enter month of task 1 for january, 2 for feb....and so on" << endl;
+            cin >> month;
+            cout << "enter day of task" << endl;
+            cin >> date;
+            addtask(date, month, cal,l);
+            break;
+
+        case 2:
+            cout << "enter month of task to remove 1 for january, 2 for feb....and so on" << endl;
+            cin >> month;
+            cout << "enter day of task to remove" << endl;
+            cin >> date;
+            removetask(date, month, cal,l);
+            break;
+
+        case 3:
+            displaytasks(cal);
+            break;    
+        default:
+            break;
+        }
+    }
 	return 0;
 }
