@@ -13,6 +13,7 @@ private:
     int AccountNum;
     string AccountHolderName;
     double balance;
+    
 public:
     BankAccount(int a = 0, string b = "no name", double c = 0.00){
         this->AccountNum = a;
