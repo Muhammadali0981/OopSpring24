@@ -10,18 +10,13 @@ using namespace std;
 class WeekDays
 {
 private:
-    string Days[7];
+    string Days[7]= {"Sunday","Monday","Tuesday", "Wednesday","Thrusday","Friday","Saturday"};
     int CurrentDay;
 
 public:
+   //intialization is not possible here since parametrized constructors need to have days as input 
    WeekDays(){
-    Days[0] = "Sunday";
-    Days[1] = "Monday";
-    Days[2] = "Tuesday";
-    Days[3] = "Wednesday";
-    Days[4] = "Thrusday";
-    Days[5] = "Friday";
-    Days[6] = "Saturday";
+
    }
 
     WeekDays(int num){
@@ -44,15 +39,24 @@ public:
 
     string getPreviousDay(){
 
-        if (CurrentDay = 0) return (this->Days[6]);
-        else return(this->Days[CurrentDay - 2]);
+        if (CurrentDay == 0) return (this->Days[6]);
+        return(this->Days[CurrentDay - 2]);
 
     }
 
     string getNthDayFromToday(int N){
 
-        if (N+CurrentDay > 7) return(this->Days[(N+CurrentDay%7) - 1]);
-        else return(this->Days[CurrentDay+N - 1]);
+        if ((N+CurrentDay) > 7) return(Days[((N+CurrentDay)%7) - 1]);
+        return(Days[(CurrentDay+N)- 1]);
 
     }
 };
+
+int main(){
+
+    WeekDays days(7);
+    cout << "Current Day:" << days.getCurrentDay() << endl;
+    cout << "Next Day:" << days.getNextDay() << endl;
+    cout << "Previous Day:" << days.getPreviousDay() << endl;
+    cout << "Nth Day from today:" << days.getNthDayFromToday(3) << endl;
+}
