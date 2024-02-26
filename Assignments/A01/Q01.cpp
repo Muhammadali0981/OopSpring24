@@ -196,7 +196,7 @@ int main(){
             cout << "Enter Pet Name You wish to return: ";
 	        cin.ignore();
 	        getline(cin, m);
-            adopter.adoptPet(data,m);
+            adopter.returnpet(data,m);
             break;
 
         }
