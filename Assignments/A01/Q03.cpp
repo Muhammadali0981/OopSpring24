@@ -146,6 +146,7 @@ public:
 int main()
 {
     ChessBoard myboard;
+	cout << "Name: Muhammad Ali" << endl << "ID: 23K-0052" << endl;
     myboard.display();
 	cout << endl;
 	//valid moves
