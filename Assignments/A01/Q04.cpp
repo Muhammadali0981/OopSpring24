@@ -22,7 +22,7 @@ public:
 	RollerCoaster(string name, int height, int length, int capacity) 
 	   : name(name), height(height), length(length), speed(0), rideInProgress(false) 
 	{
-		if (capacity%2 || capacity%3) this->capacity = capacity;
+		if (capacity%2==0 || capacity%3==0) this->capacity = capacity;
         else this->capacity = capacity + 1;
      
    	}
@@ -58,12 +58,12 @@ public:
     		return capacity;
     	}
 
-    	int result;
         if (riders > capacity) {
-        result = capacity;
+        this->setCurrentNumRiders(capacity);
         return riders-capacity;
         }
         else {
+        this->setCurrentNumRiders(riders);
         return 0;
         }
         
@@ -90,11 +90,13 @@ public:
 
     void brake() {
     	this->setSpeed(this->speed-5);//my roll number is 0052
+        if (this->speed < 0) this->speed == 0;//to not get neg
     }
 };
 
 int main()
 {
+    cout << "Name: Muhammad Ali" << endl << "ID: 23K-0052" << endl;
 	RollerCoaster rc1;
 	RollerCoaster rc2("roller coaster", 800, 1500, 37);
 
@@ -102,13 +104,13 @@ int main()
     cout << "capacity:" << rc2.getCapacity() << endl;
 
 	rc2.start();
-	rc2.seatRiders(30);
 	rc2.stop();
 
 	cout << "not seated: " << rc2.seatRiders(39) << endl;
 	cout << "riders: " << rc2.getCurrentNumRiders() << endl;
 	cout << "empty seats: " << rc2.start() << endl;
 
+    rc2.setSpeed(10);
     cout << "Speed before accelartion:" << rc2.getSpeed() << endl;
 	rc2.accelerate();
     cout << "Speed after accelartion:" << rc2.getSpeed() << endl;
