@@ -28,6 +28,7 @@ public:
         cout << "Happiness level: " << this-> happinessLevel << endl;
         cout << "Special Skills: " << endl;
         for(string skill : specialSkills) cout << skill << endl;
+        cout << endl;
          
     }
 
@@ -45,7 +46,7 @@ public:
 
     void updateHunger(int feed) {//assuming each time pet is fed it recives +1 feed
 
-        //assuming hunger level is from 1 t0 10 and pet is hungry is it is at level 5
+        //assuming hunger level is from 1 t0 10 and pet is hungry if it is at level 5
         this->hungerLevel -= feed;
 		if (this->hungerLevel > 5) happinessLevel -= 1;
 		else happinessLevel += 1;
@@ -113,7 +114,7 @@ public:
         int choice;
         cout << "what do you wish to do with " << name << endl;
         cout << "1.play" << endl << "2.feed" << endl;
-
+        cin >> choice;
         if (choice == 1){
 
             for (int i = 0; i < pets.size(); ++i)
@@ -144,55 +145,67 @@ int main(){
 
     cout << "Name: Muhammad Ali" << endl << "ID: 23K-0052" << endl;
     //intializing the pets database
-    vector<Pet> data[5] = {
-        {Pet("sick", "tom", 10, 10, {"jumps", "talks"})},
-        {Pet("healthy", "tim", 10, 10, {"talks"})},
-        {Pet("sick", "ben", 10, 10, {"No skill"})},
-        {Pet("healthy", "jack", 10, 10, {"runs fast"})},
-        {Pet("healthy", "milo", 10, 10, {"jumps"})},
+    vector<Pet> data = {
+        {Pet("sick", "tom", 4, 5, {"jumps", "talks"})},
+        {Pet("healthy", "tim", 8, 6, {"talks"})},
+        {Pet("sick", "ben", 6, 8, {"No skill"})},
+        {Pet("healthy", "jack", 4, 5, {"runs fast"})},
+        {Pet("healthy", "milo", 1, 8, {"jumps"})},
         
     };
     Adopter adopter("simon","0316715614");
     int choice;
-    while(choice != 5){
+    while(choice != 6){
 
-        cout << "Welcome to pet shopenter choice" << endl;
+        cout << "Welcome to pet shop enter choice" << endl;
         cout << "1.See all pets" << endl;
         cout << "2.Interact with pet" << endl;
         cout << "3.Adopt Pet" << endl;
         cout << "4.Return Pet" << endl;
-        cout << "5.Exit" << endl;
-    
+        cout << "5.Show adpoted pets" << endl;
+        cin >> choice;
+
         switch (choice)
         {
         case 1:
-
+        {
             for(Pet p : data) p.displayPetDetails();
             break;
-        
+        }
         case 2:
-    
+        {
             string name;
 	        cout << "Enter Pet Name You wish to interact with: ";
 	        cin.ignore();
 	        getline(cin, name);
             adopter.interact(data,name);
-
+            break;
+        }
         case 3:
-
+        {
             string n;
             cout << "Enter Pet Name You wish to adopt: ";
 	        cin.ignore();
 	        getline(cin, n);
-            adopter.adoptPet(&data,n);
-            
+            adopter.adoptPet(data,n);
+            break;
+        }   
         case 4:
+        {
             string m;
             cout << "Enter Pet Name You wish to return: ";
 	        cin.ignore();
 	        getline(cin, m);
             adopter.adoptPet(data,m);
+            break;
 
+        }
+
+        case 5:
+        {
+            adopter.displayAdoptedPets();
+            break;
+        }
         default:
             break;
         }
