@@ -42,7 +42,7 @@ public:
         cout << "Balance: " << balance << "\n";
         cout << "Number of transactions: " << num_trans << "\n";
         for (int i = 0; i < num_trans; i++)
-            cout << "Transaction" << i+1 << ":" << trans_history[i] << "\n";
+            cout << "Transaction " << i+1 << ":" << trans_history[i] << "\n";
     }
 
     void updateTransactionHistory(int *t, int count) {
