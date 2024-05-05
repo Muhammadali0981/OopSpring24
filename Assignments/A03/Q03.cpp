@@ -1,6 +1,6 @@
 /* Programmer:Muhammad Ali 23K-0052
-* Date: 02/05/24
-* Descrption:Pet class
+* Date: 04/05/24
+* Descrption:Matrix calculator based on templates
 */
 
 #include <iostream>
